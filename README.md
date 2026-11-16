@@ -1,5 +1,3 @@
-# AgendaElectronica
-
 # Agenda Electrónica Multicapa
 
 ## Descripción del proyecto
