@@ -1,0 +1,87 @@
+CREATE DATABASE AgendaElectronica_Multicapa;
+GO
+
+USE AgendaElectronica_Multicapa;
+GO
+
+-- Crear tabla de contactos
+CREATE TABLE Contactos
+(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre NVARCHAR(100) NOT NULL,
+    Telefono NVARCHAR(20) NOT NULL,
+    Correo NVARCHAR(100),
+    Direccion NVARCHAR(200)
+);
+GO
+
+-- Insertar contacto
+CREATE PROCEDURE sp_Contacto_Insertar
+    @Nombre NVARCHAR(100),
+    @Telefono NVARCHAR(20),
+    @Correo NVARCHAR(100),
+    @Direccion NVARCHAR(200)
+AS
+BEGIN
+    INSERT INTO Contactos (Nombre, Telefono, Correo, Direccion)
+    VALUES (@Nombre, @Telefono, @Correo, @Direccion);
+
+    SELECT SCOPE_IDENTITY() AS Id;
+END;
+GO
+
+-- Modificar contacto
+CREATE PROCEDURE sp_Contacto_Modificar
+    @Id INT,
+    @Nombre NVARCHAR(100),
+    @Telefono NVARCHAR(20),
+    @Correo NVARCHAR(100),
+    @Direccion NVARCHAR(200)
+AS
+BEGIN
+    UPDATE Contactos
+    SET Nombre = @Nombre,
+        Telefono = @Telefono,
+        Correo = @Correo,
+        Direccion = @Direccion
+    WHERE Id = @Id;
+
+    SELECT @@ROWCOUNT AS FilasAfectadas;
+END;
+GO
+
+-- Eliminar contacto
+CREATE PROCEDURE sp_Contacto_Eliminar
+    @Id INT
+AS
+BEGIN
+    DELETE FROM Contactos
+    WHERE Id = @Id;
+
+    SELECT @@ROWCOUNT AS FilasAfectadas;
+END;
+GO
+
+-- Buscar contactos
+CREATE PROCEDURE sp_Contacto_Buscar
+    @Texto NVARCHAR(100)
+AS
+BEGIN
+    SELECT Id, Nombre, Telefono, Correo, Direccion
+    FROM Contactos
+    WHERE Nombre LIKE '%' + @Texto + '%'
+       OR Telefono LIKE '%' + @Texto + '%'
+       OR Correo LIKE '%' + @Texto + '%'
+    ORDER BY Nombre;
+END;
+GO
+
+-- Listar todos los contactos
+CREATE PROCEDURE sp_Contacto_Listar
+AS
+BEGIN
+    SELECT Id, Nombre, Telefono, Correo, Direccion
+    FROM Contactos
+    ORDER BY Nombre;
+END;
+GO

@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
   <Project Path="Agenda.Datos/Agenda.Datos.csproj" />
   <Project Path="Agenda.Entidades/Agenda.Entidades.csproj" />
   <Project Path="Agenda.Negocio/Agenda.Negocio.csproj" />

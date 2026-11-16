@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using Agenda.Entidades;
 using Agenda.Negocio;
@@ -16,6 +17,113 @@ namespace Agenda.Presentacion
         public FrmAgenda()
         {
             InitializeComponent();
+
+            // ESTILO DE LOS CAMPOS
+            TextBox[] campos =
+            {
+                txtNombre,
+                txtTelefono,
+                txtCorreo,
+                txtDireccion,
+                txtBuscar
+            };
+
+            foreach (TextBox campo in campos)
+            {
+                campo.BackColor = Color.FromArgb(248, 247, 250);
+                campo.ForeColor = Color.FromArgb(48, 35, 58);
+                campo.Font = new Font("Segoe UI", 10);
+                campo.BorderStyle = BorderStyle.FixedSingle;
+            }
+
+            // ESTILO DE LA TABLA
+            dgvContactos.BackgroundColor = Color.White;
+            dgvContactos.BorderStyle = BorderStyle.None;
+            dgvContactos.GridColor = Color.FromArgb(230, 225, 235);
+
+            dgvContactos.RowHeadersVisible = false;
+            dgvContactos.AllowUserToAddRows = false;
+            dgvContactos.ReadOnly = true;
+            dgvContactos.MultiSelect = false;
+
+            dgvContactos.SelectionMode =
+                DataGridViewSelectionMode.FullRowSelect;
+
+            dgvContactos.AutoSizeColumnsMode =
+                DataGridViewAutoSizeColumnsMode.Fill;
+
+            dgvContactos.EnableHeadersVisualStyles = false;
+
+            // ENCABEZADOS
+            dgvContactos.ColumnHeadersDefaultCellStyle.BackColor =
+                Color.FromArgb(112, 44, 145);
+
+            dgvContactos.ColumnHeadersDefaultCellStyle.ForeColor =
+                Color.White;
+
+            dgvContactos.ColumnHeadersDefaultCellStyle.Font =
+                new Font("Segoe UI", 10, FontStyle.Bold);
+
+            // FILAS
+            dgvContactos.DefaultCellStyle.Font =
+                new Font("Segoe UI", 10, FontStyle.Regular);
+
+            dgvContactos.DefaultCellStyle.SelectionBackColor =
+                Color.FromArgb(225, 207, 238);
+
+            dgvContactos.DefaultCellStyle.SelectionForeColor =
+                Color.FromArgb(48, 35, 58);
+
+            dgvContactos.RowTemplate.Height = 35;
+            dgvContactos.ColumnHeadersHeight = 40;
+
+            // FONDO GENERAL
+            this.BackColor = Color.FromArgb(245, 243, 248);
+
+            // MENU LATERAL
+            pnlMenu.BackColor = Color.FromArgb(112, 44, 145);
+
+            // ENCABEZADO
+            pnlEncabezado.BackColor = Color.FromArgb(245, 243, 248);
+
+            // PANEL DEL FORMULARIO
+            pnlFormulario.BackColor = Color.White;
+
+            // TITULO PRINCIPAL
+            lblTitulo.ForeColor = Color.White;
+            lblTitulo.BackColor = Color.Transparent;
+
+            // BOTONES
+            btnInsertar.BackColor = Color.FromArgb(112, 44, 145);
+            btnInsertar.ForeColor = Color.White;
+
+            btnModificar.BackColor = Color.FromArgb(112, 44, 145);
+            btnModificar.ForeColor = Color.White;
+
+            btnBuscar.BackColor = Color.FromArgb(112, 44, 145);
+            btnBuscar.ForeColor = Color.White;
+
+            btnEliminar.BackColor = Color.FromArgb(190, 65, 85);
+            btnEliminar.ForeColor = Color.White;
+
+            btnLimpiar.BackColor = Color.FromArgb(230, 224, 236);
+            btnLimpiar.ForeColor = Color.FromArgb(65, 50, 75);
+
+            // ESTILO DE LAS ETIQUETAS
+            Label[] etiquetas =
+            {
+                lblNombre,
+                lblTelefono,
+                lblCorreo,
+                lblDireccion
+            };
+
+            foreach (Label etiqueta in etiquetas)
+            {
+                etiqueta.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+                etiqueta.ForeColor = Color.FromArgb(70, 55, 80);
+                etiqueta.BackColor = Color.Transparent;
+            }
 
             // Conectar los eventos de los botones
             btnInsertar.Click += btnInsertar_Click;

@@ -1,4 +1,5 @@
-﻿namespace Agenda.Presentacion
+﻿using System.Drawing;
+namespace Agenda.Presentacion
 {
     partial class FrmAgenda
     {
@@ -48,7 +49,7 @@
             btnBuscar = new Button();
             dgvContactos = new DataGridView();
             txtBuscar = new TextBox();
-            lbl = new Label();
+            lblBuscar = new Label();
             pnlMenu.SuspendLayout();
             pnlEncabezado.SuspendLayout();
             pnlFormulario.SuspendLayout();
@@ -275,17 +276,17 @@
             txtBuscar.Size = new Size(250, 30);
             txtBuscar.TabIndex = 9;
             // 
-            // lbl
+            // lblBuscar
             // 
-            lbl.AutoSize = true;
-            lbl.BackColor = Color.Plum;
-            lbl.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbl.ForeColor = SystemColors.ButtonHighlight;
-            lbl.Location = new Point(758, 91);
-            lbl.Name = "lbl";
-            lbl.Size = new Size(123, 20);
-            lbl.TabIndex = 10;
-            lbl.Text = "Buscar Contacto";
+            lblBuscar.AutoSize = true;
+            lblBuscar.BackColor = Color.Plum;
+            lblBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblBuscar.ForeColor = SystemColors.ButtonHighlight;
+            lblBuscar.Location = new Point(758, 91);
+            lblBuscar.Name = "lblBuscar";
+            lblBuscar.Size = new Size(123, 20);
+            lblBuscar.TabIndex = 10;
+            lblBuscar.Text = "Buscar Contacto";
             // 
             // FrmAgenda
             // 
@@ -293,7 +294,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1142, 653);
-            Controls.Add(lbl);
+            Controls.Add(lblBuscar);
             Controls.Add(txtBuscar);
             Controls.Add(dgvContactos);
             Controls.Add(btnBuscar);
@@ -342,6 +343,7 @@
         private Button btnBuscar;
         private DataGridView dgvContactos;
         private TextBox txtBuscar;
-        private Label lbl;
+        private Label lblBuscar;
+
     }
 }
